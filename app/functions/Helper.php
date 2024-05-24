@@ -2,6 +2,7 @@
 
 namespace App\Functions;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
 
 class Helper{
     public static function generateSlug($string, $model){
@@ -26,5 +27,13 @@ class Helper{
         $exists = $model::where('name', $type)->first();
 
         return !$exists;
+    }
+
+    public static function getTypeId($string, $modle){
+        $type = $string;
+
+        $type_id = $modle::where('name', $type)->value('id');
+
+        return $type_id;
     }
 }
