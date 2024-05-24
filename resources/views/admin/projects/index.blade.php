@@ -32,6 +32,7 @@
                 <tr>
                     <th scope="col">ID</th>
                     <th scope="col">Name</th>
+                    <th scope="col">Type</th>
                     <th scope="col"></th>
                 </tr>
                 </thead>
@@ -46,6 +47,7 @@
                                     <input class="imp_reed" type="text" value="{{ $project->name }}" name="name" id="{{ $project->name }}">
                                 </form>
                             </td>
+                            <td>{{ $project->type->name }}</td>
                             <td class="d-flex justify-content-end">
                                 <button class="btn btn-warning mx-1" onclick="submitForm({{ $project->id }})"><i class="fa-solid fa-pen"></i></button>
                                 <form action="{{ route('admin.projects.destroy', $project) }}" method="POST" onsubmit="return confirm('Sicuro di voler eliminare il progetto {{ $project->name }}?')">
