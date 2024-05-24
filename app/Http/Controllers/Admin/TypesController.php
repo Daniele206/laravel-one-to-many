@@ -36,6 +36,15 @@ class TypesController extends Controller
      */
     public function store(Request $request)
     {
+        $val_data = $request->validate([
+            'name' => 'required|min:2|max:20',
+        ],
+        [
+            'name.required'=> 'Il campo name é obbligatorio',
+            'name.min'=> 'Il campo name deve contener piú di :min caratteri',
+            'name.max'=> 'Il campo name non puó contenere piú di :max caratteri',
+        ]);
+
         $exist = Type::where('name', $request->name)->first();
 
         if($exist){

@@ -31,6 +31,17 @@ class ProjectsController extends Controller
      */
     public function store(Request $request)
     {
+        $val_data = $request->validate([
+            'name' => 'required|min:2|max:20',
+            'type_id' => 'required'
+        ],
+        [
+            'name.required'=> 'Il campo name é obbligatorio',
+            'name.min'=> 'Il campo name deve contener piú di :min caratteri',
+            'name.max'=> 'Il campo name non puó contenere piú di :max caratteri',
+            'type_id.required'=> 'Il type é obbligatorio'
+        ]);
+
         $exist = Project::where('name', $request->name)->first();
 
         if($exist){
@@ -38,6 +49,7 @@ class ProjectsController extends Controller
         }else{
             $new = new Project();
             $new->name = $request->name;
+            $new->type_id = $request->type_id;
             $new->slug = Helper::generateSlug($new->name, Project::class);
             $new->save();
             return redirect()->route('admin.projects.index')->with('success', 'Progetto inserito correttamente');
@@ -69,9 +81,9 @@ class ProjectsController extends Controller
             'name' => 'required|min:2|max:20'
         ],
         [
-            'name.required'=> 'il campo name é obbligatorio',
-            'name.min'=> 'il campo name deve contener piú di :min caratteri',
-            'name.max'=> 'il campo name non puó contenere piú di :max caratteri'
+            'name.required'=> 'Il campo name é obbligatorio',
+            'name.min'=> 'Il campo name deve contener piú di :min caratteri',
+            'name.max'=> 'Il campo name non puó contenere piú di :max caratteri'
         ]);
 
         $exist = Project::where('name', $request->name)->first();

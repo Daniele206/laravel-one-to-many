@@ -4,9 +4,13 @@
         <div class="col bg-success h-100 overflow-auto">
             @if ($errors->any())
                 <div class="alert alert-danger ms-2 mt-3 w-50" role="alert">
-                    @foreach ($errors->all() as $error)
-                        {{$error}}
-                    @endforeach
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>
+                                {{$error}}
+                            </li>
+                        @endforeach
+                    </ul>
                 </div>
             @endif
             @if (session('error'))
@@ -23,7 +27,17 @@
                 <h2>Aggiungi Project <i class="fa-solid fa-plus"></i></h2>
                 <form class="d-flex" action="{{ route('admin.projects.store') }}" method="POST">
                     @csrf
-                    <input class="form-control w-25 mx-1" type="text" placeholder="Name" name="name">
+                    <input class="form-control w-25" type="text" placeholder="Name" name="name">
+                    <select class="form-select w-25 mx-1" aria-label="Default select example" name="type_id">
+                        <option selected value="">Type</option>
+                        <option value="1">html</option>
+                        <option value="2">html/css</option>
+                        <option value="3">js</option>
+                        <option value="4">vue</option>
+                        <option value="5">vite</option>
+                        <option value="6">php</option>
+                        <option value="7">laravell</option>
+                    </select>
                     <button type="submit" class="btn btn-outline-success mx-1">Aggiungi</button>
                 </form>
             </div>
