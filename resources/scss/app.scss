@@ -9,7 +9,21 @@
 
 .cont_h{
     .lh_li{
-        line-height: 40px;
+        display: flex;
+        justify-content: center;
+        margin-top: 17px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        width: 130px;
+        border: 1px solid white;
+        transition: 0.3s;
+        &:hover{
+            transition: 0.3s;
+            background-color: white;
+            a{
+                color:black !important;
+            }
+        }
     }
     .imp_reed{
         border: none;
