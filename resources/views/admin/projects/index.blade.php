@@ -30,13 +30,9 @@
                     <input class="form-control w-25" type="text" placeholder="Name" name="name">
                     <select class="form-select w-25 mx-1" aria-label="Default select example" name="type_id">
                         <option selected value="">Type</option>
-                        <option value="1">html</option>
-                        <option value="2">html/css</option>
-                        <option value="3">js</option>
-                        <option value="4">vue</option>
-                        <option value="5">vite</option>
-                        <option value="6">php</option>
-                        <option value="7">laravell</option>
+                        @foreach ($types as $type)
+                        <option value="{{ $type->id }}">{{$type->name}}</option>
+                        @endforeach
                     </select>
                     <button type="submit" class="btn btn-outline-success mx-1">Aggiungi</button>
                 </form>
