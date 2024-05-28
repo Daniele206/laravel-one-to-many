@@ -47,7 +47,7 @@
                                     @endif
                                 </td>
                                 <td class="d-flex justify-content-end">
-
+                                    <a href="{{ route('admin.projects.show', $project) }}" class="btn btn-success mx-1"><i class="fa-solid fa-eye"></i></a>
                                     <a href="{{ route('admin.projects.edit', $project) }}" class="btn btn-warning mx-1"><i class="fa-solid fa-pen"></i></a>
                                     <form action="{{ route('admin.projects.destroy', $project) }}" method="POST" onsubmit="return confirm('Sicuro di voler eliminare il progetto {{ $project->name }}?')">
                                         @csrf

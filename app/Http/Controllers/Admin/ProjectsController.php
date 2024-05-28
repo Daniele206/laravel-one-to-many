@@ -60,6 +60,7 @@ class ProjectsController extends Controller
             $new = new Project();
             $new->name = $request->name;
             $new->type_id = $request->type_id;
+            $new->description = $request->description;
             $new->image = $image_path;
             $new->slug = Helper::generateSlug($new->name, Project::class);
             $new->save();
@@ -70,9 +71,9 @@ class ProjectsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Project $project)
     {
-        //
+        return view('admin.projects.show', compact('project'));
     }
 
     /**

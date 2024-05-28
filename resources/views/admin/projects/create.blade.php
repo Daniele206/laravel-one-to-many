@@ -24,7 +24,7 @@
                 @csrf
                     <div class="mb-3">
                         <label class="form-label">Titolo del progetto</label>
-                        <input type="text" name="name" class="form-control">
+                        <input type="text" name="name" class="form-control" value="{{ old('description')}}">
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">Tipo di progetto</label>
@@ -34,6 +34,10 @@
                                 <option value="{{ $type->id }}">{{ $type->name }}</option>
                             @endforeach
                         </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Descrizione Progetto</label>
+                        <textarea class="form-control" name="description">{{ old('description')}}</textarea>
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">Copertina Progetto</label>

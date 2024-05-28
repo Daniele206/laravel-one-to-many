@@ -36,11 +36,17 @@
                             @endforeach
                         </select>
                     </div>
+
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Descrizione Progetto</label>
+                        <textarea class="form-control" name="description">{{ old('description', $project->description)}}</textarea>
+                    </div>
                     <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">Copertina Progetto</label>
                         <input type="file" class="form-control" name="image">
                     </div>
-                <button type="submit" class="btn btn-outline-success">Submit</button>
+                <button type="submit" class="btn btn-outline-success me-2">Submit</button>
+                <a href="{{ route('admin.projects.index') }}" type="submit" class="btn btn-outline-danger">Back</a>
             </form>
         </div>
     </div>
