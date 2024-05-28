@@ -4,56 +4,45 @@ return [
     [
         "name"=>"html-boolando",
         "type"=>"html",
-        "image"=>""
     ],
     [
         "name"=>"html-css-boolzap",
-        "type"=>"html/css",
-        "image"=>""
-    ],
-    [
-        "name"=>"html-hello",
         "type"=>"html",
-        "image"=>""
     ],
     [
-        "name"=>"js-array-carousel",
-        "type"=>"js",
-        "image"=>""
+        "name"=>"vite-hello",
+        "type"=>"vite",
     ],
     [
-        "name"=>"js-biglietto-treno",
-        "type"=>"js",
-        "image"=>""
+        "name"=>"html-array-carousel",
+        "type"=>"html",
+    ],
+    [
+        "name"=>"vite-biglietto-treno",
+        "type"=>"vite",
     ],
     [
         "name"=>"vue-fizz-buzz",
-        "type"=>"vue",
-        "image"=>""
-    ],
-    [
-        "name"=>"vue-boolzapp",
-        "type"=>"vue",
-        "image"=>""
-    ],
-    [
-        "name"=>"vite-boolflix",
         "type"=>"vite",
-        "image"=>""
     ],
     [
-        "name"=>"vite-boolflix",
-        "type"=>"vite",
-        "image"=>""
-    ],
-    [
-        "name"=>"php-dischi-json",
+        "name"=>"php-boolzapp",
         "type"=>"php",
-        "image"=>""
+    ],
+    [
+        "name"=>"laravel-boolflix",
+        "type"=>"laravel",
+    ],
+    [
+        "name"=>"php-boolflix",
+        "type"=>"php",
+    ],
+    [
+        "name"=>"laravel-dischi-json",
+        "type"=>"laravel",
     ],
     [
         "name"=>"laravel-dc-comics",
-        "type"=>"laravell",
-        "image"=>""
+        "type"=>"laravel",
     ],
 ];

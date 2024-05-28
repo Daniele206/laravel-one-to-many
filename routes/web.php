@@ -6,6 +6,7 @@ use App\Http\Controllers\Guest\PageController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProjectsController;
 use App\Http\Controllers\Admin\TypesController;
+use App\Http\Controllers\Admin\TechnologiesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +28,7 @@ Route::middleware(['auth', 'verified'])
                     Route::get('/', [DashboardController::class, 'index'])->name('home');
                     Route::resource('projects', ProjectsController::class);
                     Route::resource('types', TypesController::class);
+                    Route::resource('technologies', TechnologiesController::class);
                     Route::get('type-projects', [TypesController::class, 'typeProjects'])->name('type_projects');
                 });
 
