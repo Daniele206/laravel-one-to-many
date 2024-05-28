@@ -25,18 +25,7 @@
                     </div>
                 @endif
                 <div class="mt-3 ms-2 p-3 w-98 bg-light shadow">
-                    <h2>Aggiungi Project <i class="fa-solid fa-plus"></i></h2>
-                    <form class="d-flex" action="{{ route('admin.projects.store') }}" method="POST">
-                        @csrf
-                        <input class="form-control w-25" type="text" placeholder="Name" name="name">
-                        <select class="form-select w-25 mx-1" aria-label="Default select example" name="type_id">
-                            <option selected value="">Type</option>
-                            @foreach ($types as $type)
-                            <option value="{{ $type->id }}">{{$type->name}}</option>
-                            @endforeach
-                        </select>
-                        <button type="submit" class="btn btn-outline-success mx-1">Aggiungi</button>
-                    </form>
+                    <h2>Aggiungi Project <a href="{{ route('admin.projects.create') }}" class="fa-solid fa-plus text-decoration-none"></a></h2>
                 </div>
                 <table class="table mt-3 ms-2 w-98 shadow">
                     <thead>
@@ -66,6 +55,7 @@
                                     @endif
                                 </td>
                                 <td class="d-flex justify-content-end">
+
                                     <button class="btn btn-warning mx-1" onclick="submitForm({{ $project->id }})"><i class="fa-solid fa-pen"></i></button>
                                     <form action="{{ route('admin.projects.destroy', $project) }}" method="POST" onsubmit="return confirm('Sicuro di voler eliminare il progetto {{ $project->name }}?')">
                                         @csrf
@@ -80,28 +70,25 @@
             </div>
             <div class="rigth-box w-50">
                 <div id="carouselExampleAutoplaying" class="carousel slide mt-3 ms-3 w-98" data-bs-ride="carousel">
-                    <div class="carousel-inner">
-                        <div class="carousel-item active bg-black">
-                            <img src="https://res.klook.com/images/fl_lossy.progressive,q_65/c_fill,w_1200,h_630/w_80,x_15,y_15,g_south_west,l_Klook_water_br_trans_yhcmh3/activities/tsah7c9evnal289z5fig/Biglietto%20d'ingresso%20per%20IMG%20Worlds%20of%20Adventure%20a%20Dubai%2C%20Klook.jpg" class="d-block w-100 opacity-50" alt="...">
+                    <div class="carousel-inner" style="height: 450px">
+                        <div class="carousel-item active bg-black w-100 h-100">
+                            <img src="https://www.musaformazione.it/wp-content/uploads/2021/08/introduzione-HTML.jpg" class="d-block w-100 h-100 opacity-50" alt="...">
                             <div class="carousel-caption d-none d-md-block">
-                                <h4 class="fw-bold">First slide label</h4>
-                                <p class="fs-5">Some representative placeholder content for the first slide.</p>
+                                <h4 class="fw-bold">BoolFolio</h4>
+                                <p class="fs-5">I miei progetti</p>
                             </div>
                         </div>
-                        <div class="carousel-item bg-black">
-                            <img src="https://res.klook.com/images/fl_lossy.progressive,q_65/c_fill,w_1200,h_630/w_80,x_15,y_15,g_south_west,l_Klook_water_br_trans_yhcmh3/activities/tsah7c9evnal289z5fig/Biglietto%20d'ingresso%20per%20IMG%20Worlds%20of%20Adventure%20a%20Dubai%2C%20Klook.jpg" class="d-block w-100 opacity-50" alt="...">
-                            <div class="carousel-caption d-none d-md-block">
-                                <h4 class="fw-bold">First slide label</h4>
-                                <p class="fs-5">Some representative placeholder content for the first slide.</p>
-                            </div>
-                        </div>
-                        <div class="carousel-item bg-black">
-                            <img src="https://res.klook.com/images/fl_lossy.progressive,q_65/c_fill,w_1200,h_630/w_80,x_15,y_15,g_south_west,l_Klook_water_br_trans_yhcmh3/activities/tsah7c9evnal289z5fig/Biglietto%20d'ingresso%20per%20IMG%20Worlds%20of%20Adventure%20a%20Dubai%2C%20Klook.jpg" class="d-block w-100 opacity-50" alt="...">
-                            <div class="carousel-caption d-none d-md-block">
-                                <h4 class="fw-bold">First slide label</h4>
-                                <p class="fs-5">Some representative placeholder content for the first slide.</p>
-                            </div>
-                        </div>
+                        @foreach ($projects as $project)
+                            @if (isset($project->image))
+                                <div class="carousel-item bg-black w-100 h-100">
+                                    <img class="d-block w-100 h-100 opacity-50 ratio-16x9" src="{{ asset('storage/'. $project->image) }}" alt="{{ $project->image }}">
+                                    <div class="carousel-caption d-none d-md-block">
+                                        <h4 class="fw-bold">{{  $project->name }}</h4>
+                                        <p class="fs-5">{{  $project->type->name }}</p>
+                                    </div>
+                                </div>
+                            @endif
+                        @endforeach
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>

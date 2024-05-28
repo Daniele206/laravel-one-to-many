@@ -3,46 +3,57 @@
 return [
     [
         "name"=>"html-boolando",
-        "type"=>"html"
+        "type"=>"html",
+        "image"=>""
     ],
     [
         "name"=>"html-css-boolzap",
-        "type"=>"html/css"
+        "type"=>"html/css",
+        "image"=>""
     ],
     [
         "name"=>"html-hello",
-        "type"=>"html"
+        "type"=>"html",
+        "image"=>""
     ],
     [
         "name"=>"js-array-carousel",
-        "type"=>"js"
+        "type"=>"js",
+        "image"=>""
     ],
     [
         "name"=>"js-biglietto-treno",
-        "type"=>"js"
+        "type"=>"js",
+        "image"=>""
     ],
     [
         "name"=>"vue-fizz-buzz",
-        "type"=>"vue"
+        "type"=>"vue",
+        "image"=>""
     ],
     [
         "name"=>"vue-boolzapp",
-        "type"=>"vue"
+        "type"=>"vue",
+        "image"=>""
     ],
     [
         "name"=>"vite-boolflix",
-        "type"=>"vite"
+        "type"=>"vite",
+        "image"=>""
     ],
     [
         "name"=>"vite-boolflix",
-        "type"=>"vite"
+        "type"=>"vite",
+        "image"=>""
     ],
     [
         "name"=>"php-dischi-json",
-        "type"=>"php"
+        "type"=>"php",
+        "image"=>""
     ],
     [
         "name"=>"laravel-dc-comics",
-        "type"=>"laravell"
+        "type"=>"laravell",
+        "image"=>""
     ],
 ];

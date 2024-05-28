@@ -7,6 +7,7 @@ use App\Models\Project;
 use App\Models\Type;
 use Illuminate\Http\Request;
 use App\Functions\Helper;
+use Illuminate\Support\Facades\Storage;
 
 class ProjectsController extends Controller
 {
@@ -25,7 +26,9 @@ class ProjectsController extends Controller
      */
     public function create()
     {
-        //
+        $types = Type::All();
+        $projects = Project::All();
+        return view('admin.projects.create', compact('projects', 'types'));
     }
 
     /**
@@ -33,15 +36,20 @@ class ProjectsController extends Controller
      */
     public function store(Request $request)
     {
+        $form_data = $request->all();
+
+        if(array_key_exists('image', $form_data)){
+            $image_path = Storage::put('uploads', $form_data['image']);
+            $form_data['image'] = $image_path;
+        }
+
         $val_data = $request->validate([
             'name' => 'required|min:2|max:20',
-            'type_id' => 'required'
         ],
         [
             'name.required'=> 'Il campo name é obbligatorio',
             'name.min'=> 'Il campo name deve contener piú di :min caratteri',
             'name.max'=> 'Il campo name non puó contenere piú di :max caratteri',
-            'type_id.required'=> 'Il type é obbligatorio'
         ]);
 
         $exist = Project::where('name', $request->name)->first();
@@ -52,6 +60,7 @@ class ProjectsController extends Controller
             $new = new Project();
             $new->name = $request->name;
             $new->type_id = $request->type_id;
+            $new->image = $image_path;
             $new->slug = Helper::generateSlug($new->name, Project::class);
             $new->save();
             return redirect()->route('admin.projects.index')->with('success', 'Progetto inserito correttamente');
