@@ -30,7 +30,6 @@
                 <table class="table mt-3 ms-2 w-98 shadow">
                     <thead>
                     <tr>
-                        <th scope="col">ID</th>
                         <th scope="col">Name</th>
                         <th scope="col">Type</th>
                         <th scope="col"></th>
@@ -39,14 +38,7 @@
                     <tbody>
                         @foreach ($projects as $project)
                             <tr>
-                                <th scope="row">{{ $project->id }}</th>
-                                <td>
-                                    <form action="{{ route('admin.projects.update', $project) }}" method="POST" id="form-edit-{{ $project->id }}">
-                                        @csrf
-                                        @method('PUT')
-                                        <input class="imp_reed" type="text" value="{{ $project->name }}" name="name" id="{{ $project->name }}">
-                                    </form>
-                                </td>
+                                <th scope="row">{{ $project->name }}</th>
                                 <td>
                                     @if (isset($project->type->name))
                                         {{ $project->type->name }}
@@ -56,7 +48,7 @@
                                 </td>
                                 <td class="d-flex justify-content-end">
 
-                                    <button class="btn btn-warning mx-1" onclick="submitForm({{ $project->id }})"><i class="fa-solid fa-pen"></i></button>
+                                    <a href="{{ route('admin.projects.edit', $project) }}" class="btn btn-warning mx-1"><i class="fa-solid fa-pen"></i></a>
                                     <form action="{{ route('admin.projects.destroy', $project) }}" method="POST" onsubmit="return confirm('Sicuro di voler eliminare il progetto {{ $project->name }}?')">
                                         @csrf
                                         @method('DELETE')
